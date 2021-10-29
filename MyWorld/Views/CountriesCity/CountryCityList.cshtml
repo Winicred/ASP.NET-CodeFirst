@@ -1,0 +1,40 @@
+﻿@model IEnumerable<MyWorld.Models.Cities>
+
+@{
+    ViewBag.Title = "CountryCityList";
+}
+
+<h2>CountryCityList</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Population)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Photo)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Population)
+            </td>
+            <td>
+                @if (item.Photo != null)
+                {
+                    <img src="@Url.Action("GetImage", new {item.Id})" class="img-rounded" style="width: 150px"/>
+                }
+            </td>
+        </tr>
+    }
+
+</table>
